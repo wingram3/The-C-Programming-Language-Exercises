@@ -4,7 +4,6 @@
    at position p set to the rightmost n bits of y, leaving the other bits unchanged. */
 
 unsigned setbits(unsigned x, int p, int n, unsigned y);
-int my_getline(char line[], int lim);
 
 int main(void)
 {
