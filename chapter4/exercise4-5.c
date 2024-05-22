@@ -12,7 +12,6 @@
 #define MAXVAL  100  /* maximum depth of val stack */
 #define BUFSIZE 100  /* maximum size of the character buffer */
 
-/* Add the modulus operator and provisions for negative numbers. */
 
 int getop(char []);
 void push(double);
@@ -21,12 +20,6 @@ int getch(void);
 void ungetch(int);
 void clear(void);
 void mathfnc(char s[]);
-
-/* external variables */
-int sp = 0;
-double val[MAXVAL];
-char buf[BUFSIZE];
-int bufp = 0;
 
 
 /* reverse Polish calculator */
@@ -99,6 +92,9 @@ int main(void)
 }
 
 
+int sp = 0;
+double val[MAXVAL];
+
 /* push: push f onto value stack */
 void push(double f)
 {
@@ -118,6 +114,13 @@ double pop(void)
         printf("error: value stack empty.\n");
         return 0.0;
     }
+}
+
+
+/* clear: clear the value stack. */
+void clear(void)
+{
+    sp = 0;
 }
 
 
@@ -156,6 +159,9 @@ int getop(char s[])
 }
 
 
+char buf[BUFSIZE];
+int bufp = 0;
+
 /* getch: get a (possibly pushed back) character. */
 int getch(void)
 {
@@ -170,13 +176,6 @@ void ungetch(int c)
         printf("ungetch: too many characters.\n");
     else
         buf[bufp++] = c;
-}
-
-
-/* clear: clear the value stack. */
-void clear(void)
-{
-    sp = 0;
 }
 
 
