@@ -10,7 +10,7 @@ int getch(void);
 void ungetch(int c);
 
 
-/* fills an array of integers by calls to getint */
+/* fills an array of floats by calls to getint */
 int main(void)
 {
     int n, getfloat(float *);
@@ -70,19 +70,4 @@ void ungetch(int c)
         printf("ungetch: too many characters.\n");
     else
         buf[bufp++] = c;
-}
-
-
-/* getline: read a line into s, return length  */
-int my_getline(char s[], int lim)
-{
-    int c, i;
-    for (i = 0; i<lim-1 && ((c=getchar()) != EOF) && c!='\n'; ++i)
-        s[i] = c;
-    if (c == '\n') {
-        s[i] = c;
-        ++i;
-    }
-    s[i] = '\0';
-    return i;
 }
