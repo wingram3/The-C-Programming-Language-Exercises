@@ -43,11 +43,11 @@ int getint(int *pn)
             return d;
         }
     }
-    for (*pn = 0; isdigit(c); c = getch())
-        *pn = 10 * *pn + (c - '0');
+    *pn = 10 * *pn + (c - '0');
     *pn *= sign;
     if (c != EOF)
-        ungetch(c);
+        for (*pn = 0; isdigit(c); c = getch())
+            ungetch(c);
     return c;
 }
 
