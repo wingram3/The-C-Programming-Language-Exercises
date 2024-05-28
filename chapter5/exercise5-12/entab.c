@@ -1,5 +1,5 @@
 /* Extend entab and detab to accept the shorthand "entab -m +n"
-   to mean tab stops every n columns, starting at column n. */
+   to mean tab stops every m columns, starting at column n. */
 
 #include <stdio.h>
 #include "tabpos.c"
