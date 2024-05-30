@@ -22,6 +22,7 @@ struct tnode {
 struct tnode *addtree(struct tnode *, char *, int, int *);
 int compare(char *s, struct tnode *p, int num, int *found);
 void treeprint(struct tnode *);
+void freetree(struct tnode *p);
 int getword(char *, int);
 void skip_comments(void);
 void skip_strings(void);
@@ -42,6 +43,7 @@ int main(int argc, char **argv)
         found = NO;
     }
     treeprint(root);
+    freetree(root);
     return 0;
 }
 
@@ -92,6 +94,18 @@ void treeprint(struct tnode *p)
         if (p->match)
             printf("%s\n", p->word);
         treeprint(p->right);
+    }
+}
+
+
+/* freetree: free the memory allocated for the binary tree. */
+void freetree(struct tnode *p)
+{
+    if (p != NULL) {
+        freetree(p->left);
+        freetree(p->right);
+        free(p->word);
+        free(p);
     }
 }
 
