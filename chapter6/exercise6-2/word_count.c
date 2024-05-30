@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-#define MAXWORD 1000
+#define MAXWORD 10000
 
 struct tnode {
     char *word;
