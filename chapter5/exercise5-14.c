@@ -5,8 +5,8 @@
 #include <string.h>
 #include <stdlib.h>
 
-#define MAXLINES 100
-#define MAXSTOR  100
+#define MAXLINES 10000
+#define MAXSTOR  10000
 #define NUMERIC  1
 #define DECR     2
 
