@@ -5,11 +5,12 @@
 #include <ctype.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 
 #define MAXWORD 1000
 #define MAXLEN  1000
 #define MAXSTOR 1000
-#define INITIAL_LINES_CAPACITY 1000
+#define INITIAL_LINES_CAPACITY 10
 
 struct tnode {
     char *word;             /* pointer to the word text                    */
@@ -21,7 +22,7 @@ struct tnode {
 };
 
 int getword(char *, int, int *);
-int readlines(char *lineptr[], char *linestor, int maxlines);
+int readlines(char **, char *, int);
 struct tnode *addtree(struct tnode *, char *, int);
 void treeprint(struct tnode *);
 void freetree(struct tnode *);
@@ -29,6 +30,10 @@ struct tnode *talloc(void);
 
 int main(void)
 {
+    clock_t start, end;
+    double cpu_time_used;
+    start = clock();
+
     struct tnode *root;
     char word[MAXWORD];
     int line_number = 1;
@@ -39,6 +44,11 @@ int main(void)
             root = addtree(root, word, line_number);
     treeprint(root);
     freetree(root);
+
+    end = clock();
+    cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+    printf("The function took %f seconds to execute \n", cpu_time_used);
+
     return 0;
 }
 
@@ -64,7 +74,8 @@ struct tnode *addtree(struct tnode *p, char *word, int line)
             p->lines_lim *= 2;
             p->lines = (int *)realloc(p->lines, p->lines_lim * sizeof(int));
         }
-        p->lines[p->lines_count++] = line;
+        if (p->lines[p->lines_count - 1] != line)
+            p->lines[p->lines_count++] = line;
     }
     else if (cond < 0)
         p->left = addtree(p->left, word, line);
@@ -141,7 +152,7 @@ int getword(char *word, int lim, int *line_number)
     while ((isalnum(c = getc(stdin)) || c == '_') && i < lim)
         word[i++] = c;
     if (c == '\n')
-        line_number++;
+        (*line_number)++;
     ungetc(c, stdin);
     word[i] = '\0';
     return word[0];
