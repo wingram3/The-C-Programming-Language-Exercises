@@ -9,7 +9,6 @@
 int my_getline(char *, int, FILE *);
 void removedq(const char *, char *);
 
-
 /* find: print lines from files that match pattern from the first command line argument. */
 int main(int argc, char *argv[])
 {
@@ -18,7 +17,7 @@ int main(int argc, char *argv[])
     FILE *fp;
 
     if (argc < 2)
-        printf("Usage: ./exercise7-7 \"pattern\" [file1] [file2] [...]\n");
+        fprintf(stderr, "Usage: ./exercise7-7 \"pattern\" [file1] [file2] [...]\n");
     else if (argc == 2)
         while (my_getline(line, MAXLINE, stdin) > 0) {
             removedq(argv[1], noquotes);
