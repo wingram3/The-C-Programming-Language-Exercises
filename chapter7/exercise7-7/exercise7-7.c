@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     FILE *fp;
 
     if (argc < 2)
-        printf("Usage: ./exercise7-7 \"pattern\" [file1] [file2] [...]");
+        printf("Usage: ./exercise7-7 \"pattern\" [file1] [file2] [...]\n");
     else if (argc == 2)
         while (my_getline(line, MAXLINE, stdin) > 0) {
             removedq(argv[1], noquotes);
