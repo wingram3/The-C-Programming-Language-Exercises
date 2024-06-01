@@ -1,0 +1,16 @@
+In a world of code so vast,
+C language stands, a classic past.
+With pointers sharp and syntax clear,
+It brings low-level magic near.
+
+Functions, structs, and arrays too,
+Crafting logic, old yet new.
+From Kernighan and Ritchie’s mind,
+A tool for coders, so refined.
+
+In every loop and if’s embrace,
+C’s elegance we can trace
+Though new languages may arise,
+C’s foundation never dies.
+
+So here’s to C, both strong and free,
