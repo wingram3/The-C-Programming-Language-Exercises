@@ -40,6 +40,7 @@ int main(int argc, char *argv[])
                     found++;
                 }
             }
+            fclose(fp);
         }
     }
     return found;
